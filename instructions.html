@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weekly Emotional Check-In — Instructions</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      margin: 0;
+      size: A4;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #1A1A1A;
+      background: #FFFFFF;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: #FFFFFF;
+    }
+
+    .page:last-child {
+      page-break-after: avoid;
+    }
+
+    /* Coral header band */
+    .page-header {
+      background: #F4917A;
+      padding: 32px 40px 28px;
+      flex-shrink: 0;
+    }
+
+    .page-header-small {
+      background: #F4917A;
+      padding: 20px 40px 18px;
+      flex-shrink: 0;
+    }
+
+    /* CC Logo in header */
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .logo-mark {
+      position: relative;
+      width: 36px;
+      height: 28px;
+    }
+
+    .logo-c-back {
+      position: absolute;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.45);
+      left: 0; top: 0;
+      line-height: 1;
+    }
+
+    .logo-c-front {
+      position: absolute;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #1A1A1A;
+      left: 10px; top: 0;
+      line-height: 1;
+    }
+
+    .logo-text {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #1A1A1A;
+      line-height: 1.4;
+    }
+
+    .header-product-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: #1A1A1A;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .header-tagline {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1A1A1A;
+      opacity: 0.75;
+      letter-spacing: 0.3px;
+    }
+
+    .header-page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1A1A1A;
+    }
+
+    .header-page-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(26,26,26,0.6);
+      margin-bottom: 6px;
+    }
+
+    /* Page body */
+    .page-body {
+      flex: 1;
+      padding: 32px 40px;
+      overflow: hidden;
+    }
+
+    /* Sections */
+    .section { margin-bottom: 28px; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9a9a9a;
+      margin-bottom: 12px;
+    }
+
+    /* Step list */
+    .step-list { list-style: none; }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .step-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #F4917A;
+      color: #1A1A1A;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-content {}
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 3px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: #1A1A1A;
+      line-height: 1.6;
+    }
+
+    /* File list */
+    .file-list { list-style: none; }
+
+    .file-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 1.5px solid #D9D9D9;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .file-icon {
+      font-size: 22px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .file-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 3px;
+      font-family: 'DM Sans', monospace;
+    }
+
+    .file-desc {
+      font-size: 13px;
+      color: #1A1A1A;
+      line-height: 1.5;
+    }
+
+    /* Inline body text */
+    p.body-text {
+      font-size: 14px;
+      color: #1A1A1A;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    /* Privacy items */
+    .privacy-list { list-style: none; }
+
+    .privacy-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .privacy-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #F4917A;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .privacy-text {
+      font-size: 14px;
+      color: #1A1A1A;
+      line-height: 1.6;
+    }
+
+    .privacy-text strong {
+      font-weight: 700;
+      color: #1A1A1A;
+    }
+
+    /* Preview link box */
+    .link-box {
+      background: #fdf5f3;
+      border: 2px dashed #F4917A;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .link-box-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #9a9a9a;
+      margin-bottom: 8px;
+    }
+
+    .link-box-url {
+      font-family: 'DM Sans', monospace;
+      font-size: 15px;
+      font-weight: 700;
+      color: #F4917A;
+      word-break: break-all;
+    }
+
+    /* Help card */
+    .help-card {
+      background: #fdf5f3;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+    }
+
+    .help-method {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #9a9a9a;
+      margin-bottom: 6px;
+    }
+
+    .help-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1A1A1A;
+    }
+
+    /* Cover page specifics */
+    .cover-welcome {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 14px;
+    }
+
+    .cover-body {
+      font-size: 14px;
+      color: #1A1A1A;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .cover-divider {
+      width: 48px;
+      height: 3px;
+      background: #F4917A;
+      border-radius: 2px;
+      margin: 20px 0;
+    }
+
+    /* Page footer */
+    .page-footer {
+      padding: 16px 40px;
+      border-top: 1px solid #D9D9D9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .footer-brand {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #9a9a9a;
+    }
+
+    .footer-page {
+      font-size: 11px;
+      font-weight: 600;
+      color: #D9D9D9;
+    }
+
+    /* Print only rules */
+    @media print {
+      a::after { content: '' !important; }
+      a { text-decoration: none; color: inherit; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PAGE 1: WELCOME                             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <div class="header-logo">
+        <div class="logo-mark">
+          <span class="logo-c-back">C</span>
+          <span class="logo-c-front">C</span>
+        </div>
+        <div class="logo-text">Couples<br>Communicate</div>
+      </div>
+      <div class="header-product-title">Weekly Emotional<br>Check-In</div>
+      <div class="header-tagline">A weekly ritual that keeps you truly seen</div>
+    </div>
+
+    <div class="page-body">
+      <div class="cover-welcome">Welcome.</div>
+
+      <p class="cover-body">
+        Most couples go days — sometimes weeks — without ever really
+        asking each other: <em>"How are you doing? Truly?"</em>
+      </p>
+
+      <p class="cover-body">
+        Not the surface answer. The honest one.
+      </p>
+
+      <p class="cover-body">
+        The Weekly Emotional Check-In gives both of you a quiet, private space
+        to answer four short prompts each week. When both partners submit,
+        a personalised Conversation Guide is generated — built entirely from
+        your responses — to help you start a real conversation.
+      </p>
+
+      <div class="cover-divider"></div>
+
+      <p class="cover-body">
+        No accounts. No subscriptions. No data ever leaving your device.
+        Just the two of you, showing up for each other, one week at a time.
+      </p>
+
+      <p class="cover-body">
+        Everything you need is in your download. This guide walks you through
+        getting started in three minutes.
+      </p>
+    </div>
+
+    <div class="page-footer">
+      <span class="footer-brand">Couples Communicate</span>
+      <span class="footer-page">1 / 6</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PAGE 2: WHAT'S IN YOUR DOWNLOAD             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header-small">
+      <div class="header-logo">
+        <div class="logo-mark">
+          <span class="logo-c-back">C</span>
+          <span class="logo-c-front">C</span>
+        </div>
+        <div class="logo-text">Couples<br>Communicate</div>
+      </div>
+      <div class="header-page-num">Page 2</div>
+      <div class="header-page-title">What's In Your Download</div>
+    </div>
+
+    <div class="page-body">
+      <div class="section">
+        <p class="body-text">
+          Your ZIP file contains two files. Here's what each one is for:
+        </p>
+        <ul class="file-list">
+          <li class="file-item">
+            <span class="file-icon">📱</span>
+            <div>
+              <div class="file-name">index.html</div>
+              <div class="file-desc">
+                The interactive app. Open this file in any web browser (Chrome,
+                Safari, Firefox, Edge) on any device — phone, tablet, or computer.
+                No installation needed. Works completely offline after the first load.
+                All your check-in data is saved privately on your device.
+              </div>
+            </div>
+          </li>
+          <li class="file-item">
+            <span class="file-icon">📄</span>
+            <div>
+              <div class="file-name">instructions.pdf</div>
+              <div class="file-desc">
+                This guide. Print it out or keep it handy for reference.
+                It covers how to start, how the app works, and how to
+                contact support if you need help.
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Important to know</div>
+        <p class="body-text">
+          The app is a single HTML file. <strong>Nothing is installed on your device.</strong>
+          To access it, simply double-click <strong>index.html</strong> and it will open
+          in your default web browser — the same way you browse any website.
+        </p>
+        <p class="body-text">
+          You can bookmark it, add it to your home screen, or keep it in a shared folder
+          so both partners can easily access it from any device.
+        </p>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="footer-brand">Couples Communicate</span>
+      <span class="footer-page">2 / 6</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PAGE 3: HOW TO START                        -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header-small">
+      <div class="header-logo">
+        <div class="logo-mark">
+          <span class="logo-c-back">C</span>
+          <span class="logo-c-front">C</span>
+        </div>
+        <div class="logo-text">Couples<br>Communicate</div>
+      </div>
+      <div class="header-page-num">Page 3</div>
+      <div class="header-page-title">How To Start</div>
+    </div>
+
+    <div class="page-body">
+      <div class="section">
+        <p class="body-text">
+          The app has three tabs: <strong>This Week</strong>, <strong>Our Guide</strong>,
+          and <strong>History</strong>. Here's the flow:
+        </p>
+        <ul class="step-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">Open the app and go to "This Week"</div>
+              <div class="step-desc">
+                The current week's date is already shown at the top.
+                You'll see two cards — one for each partner.
+              </div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">Partner 1 fills in their check-in</div>
+              <div class="step-desc">
+                Answer the four prompts honestly. The energy slider
+                (1–10) captures how you're feeling this week overall.
+                Tap "Submit My Check-In" when done.
+              </div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">Pass the screen to Partner 2</div>
+              <div class="step-desc">
+                Partner 1's answers are now locked. Partner 2 fills
+                in their own responses privately, then submits.
+              </div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-title">Open "Our Guide" and start your conversation</div>
+              <div class="step-desc">
+                Once both partners have submitted, the Conversation Guide
+                unlocks. It shows your shared appreciations, gentle prompts
+                for anything that hurt, what each of you needs right now,
+                your energy comparison, and a suggested conversation starter.
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-label">When to do your check-in</div>
+        <p class="body-text">
+          Any time works — but Sunday evening or Monday morning tends to feel
+          natural. Pick a time that becomes your weekly ritual and protect it.
+        </p>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="footer-brand">Couples Communicate</span>
+      <span class="footer-page">3 / 6</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PAGE 4: PREVIEW ONLINE                      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header-small">
+      <div class="header-logo">
+        <div class="logo-mark">
+          <span class="logo-c-back">C</span>
+          <span class="logo-c-front">C</span>
+        </div>
+        <div class="logo-text">Couples<br>Communicate</div>
+      </div>
+      <div class="header-page-num">Page 4</div>
+      <div class="header-page-title">Preview Online</div>
+    </div>
+
+    <div class="page-body">
+      <div class="section">
+        <p class="body-text">
+          Want to try the app online before downloading the full version?
+          Access the live preview at the link below — no download required.
+        </p>
+
+        <div class="link-box">
+          <div class="link-box-label">Live Preview URL</div>
+          <div class="link-box-url">https://cc-weekly-checkin.vercel.app</div>
+        </div>
+
+        <p class="body-text">
+          The preview is identical to the downloaded version.
+          Any data entered in the preview is stored privately in your browser
+          — it is never sent to a server.
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Using the app from your phone</div>
+        <p class="body-text">
+          Open the preview link on your phone and tap <strong>"Add to Home Screen"</strong>
+          in your browser menu. The app will appear on your home screen like a native app,
+          and works completely offline once loaded.
+        </p>
+        <p class="body-text">
+          <strong>On iPhone:</strong> Open in Safari → Share button → "Add to Home Screen"<br>
+          <strong>On Android:</strong> Open in Chrome → three-dot menu → "Add to Home Screen"
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">History tab</div>
+        <p class="body-text">
+          The app keeps your last 12 weeks of check-ins automatically.
+          Tap any week in the History tab to expand and review both partners'
+          responses. This is yours — it never leaves your device.
+        </p>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="footer-brand">Couples Communicate</span>
+      <span class="footer-page">4 / 6</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PAGE 5: PRIVACY                             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header-small">
+      <div class="header-logo">
+        <div class="logo-mark">
+          <span class="logo-c-back">C</span>
+          <span class="logo-c-front">C</span>
+        </div>
+        <div class="logo-text">Couples<br>Communicate</div>
+      </div>
+      <div class="header-page-num">Page 5</div>
+      <div class="header-page-title">Privacy</div>
+    </div>
+
+    <div class="page-body">
+      <div class="section">
+        <p class="body-text">
+          What you share in this app is deeply personal.
+          It was built with one principle: <strong>your data belongs to you alone.</strong>
+        </p>
+
+        <ul class="privacy-list">
+          <li class="privacy-item">
+            <div class="privacy-dot"></div>
+            <div class="privacy-text">
+              <strong>Nothing leaves your device.</strong> All responses are stored locally
+              in your browser using localStorage. No servers. No cloud. No syncing.
+            </div>
+          </li>
+          <li class="privacy-item">
+            <div class="privacy-dot"></div>
+            <div class="privacy-text">
+              <strong>No account required.</strong> There is no login, no email address,
+              no profile. The app opens and works immediately.
+            </div>
+          </li>
+          <li class="privacy-item">
+            <div class="privacy-dot"></div>
+            <div class="privacy-text">
+              <strong>Works fully offline.</strong> Once the page has loaded once,
+              the app works with no internet connection. Your responses never
+              travel over a network.
+            </div>
+          </li>
+          <li class="privacy-item">
+            <div class="privacy-dot"></div>
+            <div class="privacy-text">
+              <strong>Data is stored in your browser.</strong> If you clear your browser
+              storage or use a different browser, previous check-ins will not appear.
+              Use the same browser on the same device to keep your history.
+            </div>
+          </li>
+          <li class="privacy-item">
+            <div class="privacy-dot"></div>
+            <div class="privacy-text">
+              <strong>No analytics or tracking.</strong> There is no tracking code,
+              no advertising pixels, and no third-party scripts collecting data
+              about how you use the app.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="footer-brand">Couples Communicate</span>
+      <span class="footer-page">5 / 6</span>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PAGE 6: NEED HELP                           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header-small">
+      <div class="header-logo">
+        <div class="logo-mark">
+          <span class="logo-c-back">C</span>
+          <span class="logo-c-front">C</span>
+        </div>
+        <div class="logo-text">Couples<br>Communicate</div>
+      </div>
+      <div class="header-page-num">Page 6</div>
+      <div class="header-page-title">Need Help?</div>
+    </div>
+
+    <div class="page-body">
+      <div class="section">
+        <p class="body-text">
+          If something isn't working as expected, or you have a question
+          about the app, reach out and we'll get back to you promptly.
+        </p>
+
+        <div class="help-card">
+          <div class="help-method">Email Support</div>
+          <div class="help-value">info@couplecommunicate.com</div>
+        </div>
+
+        <div class="help-card">
+          <div class="help-method">Instagram</div>
+          <div class="help-value">@couplescommunicate</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Common questions</div>
+        <p class="body-text">
+          <strong>The Conversation Guide isn't showing.</strong><br>
+          Both partners need to tap "Submit My Check-In" before the guide unlocks.
+          Check that both cards show the green "Done ✓" badge.
+        </p>
+        <p class="body-text">
+          <strong>My history disappeared.</strong><br>
+          History is stored in your browser. Use the same browser and device
+          each week to keep your history intact.
+        </p>
+        <p class="body-text">
+          <strong>The app isn't opening.</strong><br>
+          Make sure you're opening <strong>index.html</strong> directly in a web browser
+          (Chrome, Safari, Firefox or Edge). Do not try to open it with a text editor.
+        </p>
+      </div>
+
+      <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid #D9D9D9;">
+        <p style="font-size: 12px; color: #9a9a9a; line-height: 1.6;">
+          © Couples Communicate. This product is for personal use only.
+          Not for redistribution or resale.
+        </p>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="footer-brand">Couples Communicate</span>
+      <span class="footer-page">6 / 6</span>
+    </div>
+  </div>
+
+</body>
+</html>
